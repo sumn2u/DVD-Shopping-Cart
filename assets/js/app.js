@@ -48,7 +48,7 @@ $(document).on('ready', function(){
 	$(document).on('click', '.glyphicon-pencil', function(){
 	 var editElement = $(this).data('elemntId');
 	// alert(editElement);
-	 	$(this).parent().parent().find('.quantity').attr('contenteditable', 'true').focus();
+	 	$(this).parent().parent().find('.quantity').attr('contenteditable', 'true');
 	 	//$('#'+editElement).find('.quantity').focus();
 	});
 
@@ -144,14 +144,17 @@ function calculateTotal () {
     // for editable input 
     $(document).off('keyup','#selected-quanity');
     $(document).on('keyup','#selected-quanity', function(){
-    	alert("I am here !!");
+    	//alert("I am here !!");
     	 var editedQuantity = $(this).text();
-    	 alert(editedQuantity);
+    	 //alert(editedQuantity);
     	 var matchValue = /^\d+$/.exec(editedQuantity);
+    	  $('#msg').html('');
     	 if(matchValue){
-    	 	alert("Matched");
+    	 	$(this).text(editedQuantity);
+    	 	calculateTotal ();
+    	 	$('#msg').html('');
     	 }else{
-    	 	alert("not Matched");
+    	 	$('#msg').html('Invalid ! Please provide valid number !!');
     	 }
 
     });
