@@ -1,0 +1,55 @@
+Javascript Selectors 
+
+document :meaning  the whole document  
+
+<div id='my-name' class='show-me'> 
+	<span> Aarati Shrestha </span>
+</div>  
+
+css selectors 
+. class selectors 
+# id selectors
+: sudo selectors 
+
+javascript (DOM document object model) (in javscript everything is treated as objects)
+
+ var selectById = document.getElementById('my-name');
+//search in the dom having id my-name
+var selectByClass = document.getElementByClass('show-me');
+// search in the dom having the class 
+var selectByTagName = document.getElementsByTagName('body');
+
+
+Jquery( do more write less concept)
+previous things can be achieved in following ways 
+$('#my-name'); //selects by using id
+$('.show-me'); // selects by using class
+$(body); // selects by using tag name 
+
+dom transversal using jquery  
+parent()
+next()
+siblings()
+find()
+
+and so so 
+
+Front End Frame works 
+AngularJS (MVW model-view-whatever pattern)
+EmberJS (MVC model-view-controller pattern)
+NodeJS(A framework used to create a server in javascript)
+Yeomen(Helps to articraft all neccessary files to build a project)
+GruntJS(Javascript task runner)
+Qunit , Jasmine are used for testing purposes 
+
+GIT (used for versioning purpose)
+SVN (Mostly used by .NET)
+BITBUCKET
+
+
+
+JQuery UI (It is used for User interface)
+Bootstrap/ Foundation are used mostly for designing template 
+ 
+
+ 

@@ -135,12 +135,19 @@ function calculateTotal () {
 			$('#inMyCart').data('cart',cartQuantity);
 }
 	// pagination purpose
+	$('#paging_container-cat').pajinate({
+		    num_page_links_to_display : 3,
+		    items_per_page :3,
+		    wrap_around: true,
+		    show_first_last: false
+	});
     $('#paging_container2').pajinate({
 		    num_page_links_to_display : 3,
 		    items_per_page :3,
 		    wrap_around: true,
 		    show_first_last: false
 	});
+
     // for editable input 
     $(document).off('keyup','#selected-quanity');
     $(document).on('keyup','#selected-quanity', function(){
@@ -164,11 +171,24 @@ function calculateTotal () {
 	// 	    wrap_around: true,
 	// 	    show_first_last: false
 	// });
+	// show all categories 
+	  $(document).off('click','#select-category');
+	  $(document).on('click', '#select-category', function(event) {
+	  	event.preventDefault();
+	  	/* Act on the event */
+	  	removeHidePortion();
+	  	$('#select-category').addClass('active');
+	  	$('#show-category').removeClass('hide');
+	  	$('#show-cart').addClass('hide');
+	  	$('#show-dvd').addClass('hide');
+
+	  });
 	// show all dvds 
 	  $(document).off('click','#select-dvd');
 	  $(document).on('click','#select-dvd', function(){
 	  		removeHidePortion();
 	  		$('#select-dvd').addClass('active');
+	  		$('#show-category').addClass('hide');
 	  		$('#show-cart').addClass('hide');
 	  		
 	  });
@@ -177,6 +197,7 @@ function calculateTotal () {
 	  $(document).on('click','#my-cart', function(){
 	  		removeHidePortion();
 	  		$('#my-cart').addClass('active');
+	  		$('#show-category').addClass('hide');
 	  		$('#show-dvd').addClass('hide');
 	  });
 
@@ -188,6 +209,9 @@ function calculateTotal () {
 	  	$('#show-dvd').removeClass('hide');
 	  	$('#payment').removeClass('hide');
 	  	$('#payment').removeClass('active');
+	  	// show all category 
+	  	$('#select-category').removeClass('active');
+	  	$('#show-category').removeClass('hide');
 	  }
 
     // Print Order when gets Clicked 

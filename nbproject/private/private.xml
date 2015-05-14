@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/loginCheck.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/index.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/src/java/cart/DVD.java</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/ShowConfirmation.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/DisplayShoppingCart.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/includes/admin.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/includes/ads.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/src/java/cart/AddToShoppingCartServlet.java</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/ShowProductCatalog.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/includes/edit_category.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/src/java/cart/ProductDataBean.java</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/index.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/WEB-INF/web.xml</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/includes/sidebar.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/includes/add_admin.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/getCategory.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/src/java/cart/CheckoutServlet.java</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/src/java/cart/ShoppingCart.java</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/assets/js/app.js</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/src/java/cart/RemoveItemServlet.java</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/src/java/com/admin/DBConnec.java</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/includes/del_category.jsp</file>
+            <file>file:/home/suman/Desktop/JavaProjects/NetBeansProjects/DVDAppp/web/cpanel/includes/edit_ads.jsp</file>
+        </group>
+    </open-files>
+</project-private>

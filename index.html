@@ -24,16 +24,79 @@
 		
 		<div class="container-fluid breadcrumbBox text-center">
 			<ol class="breadcrumb">
-				<li class="active" id="select-dvd"><a href="#">Select DVD</a></li>
+				<li class="active" id="select-category"><a href="#">Select  Category</a></li>
+				<li id="select-dvd"><a href="#">Select DVD</a></li>
 				<li id ="my-cart" ><a href="#">In My Cart</a></li>
 				<li id="payment"><a href="#">Payment</a></li>
 			</ol>
-			<div class="row " id="msg">
-			 	
-			 </div>
+		 	<div class="text-danger text-center" id="msg">...</div>
 		</div>
+		<div class="container text-center" id="show-category">
+
+			<div class="col-md-5 col-sm-12">
+				<div class="bigcart"></div>
+				<h1>Select DVD Category</h1>
+				<p>
+					This is a simple and <b><a href="http://www.sumn2u-sumankunwar.rhcloud.com" title="Read the article!">responsive shopping cart which help in further transaction process</a></b>. It looks nice on both desktop and mobile browsers. Try it by resizing your window (or opening it on your smartphone and pc).Select the category you like and then try adding dvd's you like :-)
+				</p>
+			</div> 
+			 
+				<div class="col-md-7 col-sm-12 text-left container" id="paging_container-cat">
+			    <div class="row list-inline columnCaptions" >
+						<span>QTY</span>
+						<span>ITEM</span>
+						<span>Price</span>
+				</div>
+				<ul class="content">
+					<li class="row" data-code="p001"  >
+						<span class="quantity">   <input type="text" class="form-control" id="dvdQuantity" ></span>
+						<span class="itemName">Birthday Cake</span>
+						<span class="addbtn" > <a class="glyphicon glyphicon-plus plus-icon"> </a></span>
+						<span class="price" data-price="49.95">$49.95</span>
+					</li>
+						<li class="row" data-code="p001"  >
+						<span class="quantity">   <input type="text" class="form-control" id="dvdQuantity" ></span>
+						<span class="itemName">Birthday Cake</span>
+						<span class="addbtn" > <a class="glyphicon glyphicon-plus plus-icon"> </a></span>
+						<span class="price" data-price="49.95">$49.95</span>
+					</li>
+						<li class="row" data-code="p001"  >
+						<span class="quantity">   <input type="text" class="form-control" id="dvdQuantity" ></span>
+						<span class="itemName">Birthday Cake</span>
+						<span class="addbtn" > <a class="glyphicon glyphicon-plus plus-icon"> </a></span>
+						<span class="price" data-price="49.95">$49.95</span>
+					</li>
+						<li class="row" data-code="p001"  >
+						<span class="quantity">   <input type="text" class="form-control" id="dvdQuantity" ></span>
+						<span class="itemName">Birthday Cake</span>
+						<span class="addbtn" > <a class="glyphicon glyphicon-plus plus-icon"> </a></span>
+						<span class="price" data-price="49.95">$49.95</span>
+					</li>
+						<li class="row" data-code="p001"  >
+						<span class="quantity">   <input type="text" class="form-control" id="dvdQuantity" ></span>
+						<span class="itemName">Birthday Cake</span>
+						<span class="addbtn" > <a class="glyphicon glyphicon-plus plus-icon"> </a></span>
+						<span class="price" data-price="49.95">$49.95</span>
+					</li>
+						<li class="row" data-code="p001"  >
+						<span class="quantity">   <input type="text" class="form-control" id="dvdQuantity" ></span>
+						<span class="itemName">Birthday Cake</span>
+						<span class="addbtn" > <a class="glyphicon glyphicon-plus plus-icon"> </a></span>
+						<span class="price" data-price="49.95">$49.95</span>
+					</li>
+					
+					<!-- <li class="row totals">
+						<span class="itemName">Total:</span>
+						<span class="price">$1694.43</span>
+						<span class="order"> <a class="text-center">ORDER</a></span>
+					</li> -->
+				</ul>
+				<div class="page_navigation"></div>
+			</div>
 		
-		<div class="container text-center" id="show-dvd">
+
+		</div>
+		<div class="container text-center hide" id="show-dvd">
 
 			<div class="col-md-5 col-sm-12">
 				<div class="bigcart"></div>
