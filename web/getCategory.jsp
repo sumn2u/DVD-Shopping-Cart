@@ -10,7 +10,7 @@
          String catId= request.getParameter("catId");
      
       DBConnec dbShowCatId =new DBConnec();
-              dbShowCatId.stmt=dbShowCatId.con.prepareStatement("SELECT id, movie, rating, year, price , quantity FROM `products` WHERE category ="+catId);
+              dbShowCatId.stmt=dbShowCatId.con.prepareStatement("SELECT id, movie, rating, year, price , quantity ,remaining FROM `products` WHERE category ="+catId);
 //              out.println(dbShowCatId.stmt);
              dbShowCatId.Rs=dbShowCatId.stmt.executeQuery(); 
              
@@ -23,7 +23,9 @@
                     String id = dbShowCatId.Rs.getString(1);
                    String movieName= dbShowCatId.Rs.getString(2);
                    String price = dbShowCatId.Rs.getString(5);
-                   String quantity = dbShowCatId.Rs.getString(6);
+                   Integer totalQuantity = dbShowCatId.Rs.getInt(6);
+                   Integer purchased = dbShowCatId.Rs.getInt(7);
+                   Integer quantity = totalQuantity -purchased;
                    String code = "p00"+id;                
                    %>
                    <li class="row" data-code=<%=code%> >

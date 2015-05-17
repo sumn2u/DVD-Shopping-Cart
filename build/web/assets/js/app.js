@@ -86,11 +86,13 @@ $(document).on('ready', function(){
 			if(total >= addElmVal && total > 0){
 
 			var template = "<li class='row dvd-inmy-cart' data-code='"+ productCode +"' id='"+ productCode+"' >"
-						+ "<span class='quantity' id='selected-quanity'>"+ addElmVal+"</span>"
+						+ "<span class='quantity' id='selected-quanity' >"+ addElmVal+"</span>"
 						+"<span class='itemName'>"+ productName+"</span>"
 						+"<span class='price' data-price='"+productPrice+"'>$"+ productPrice
 						+"<a href='#' class='glyphicon glyphicon-pencil'></a>"
 						+ "<a href='#' class='glyphicon glyphicon-remove'></a>"
+                                                +"<input type='hidden' name='quantity' value='"+addElmVal+"'>"
+                                                +"<input type='hidden' name='productName' value='"+ productName+"'>"
 						+"</span>"
 					 +"</li>";
 			 var elm = $('#'+productCode).length;
@@ -107,6 +109,9 @@ $(document).on('ready', function(){
 
 	      $('.totals').find('.price').text();
           }//total value calculates 
+          else if(total<=0){
+              alert("Out of Stocks!");
+          }
           else{
               alert("toatl exceeds");
           }
@@ -277,5 +282,39 @@ function calculateTotal () {
 //       });
 //       return false;
    }) ;
+   $(document).on('click','#order-dvds', function(){
+        var data = [];
+        //$('.dvd-inmy-cart').children('span').text()
+        $('.dvd-inmy-cart').each(function(){
+             var $thatQuanity = $(this).children('span:first').text();
+             var $thatName = $(this).children('span:nth-child(2)').text();
+             var $thatPrice = $(this).children('span:last').data('price');
+              data.push({"quantity":$thatQuanity,"name":$thatName ,"price":$thatPrice});
+       // var $thatName = $(this).next().text();
+         //data.push({"quantity":$thatQuanity,"name":$thatName});
+            console.log("That Quantity is ", $thatQuanity);
+            console.log("That Name is ", $thatName);
+            console.log("That Price is",$thatPrice );
+ 
+       });
+      console.log("Data" + data);
+       
+
+       
+       
+       $.ajax({
+            type: "post",
+            url: "order.jsp", //this is my servlet
+            
+            //data:JSON.stringify(data),
+            data:{data:data},
+                success: function(msg){ 
+                        alert("Transaction Successfull !!");
+                        window.location.reload();
+                        console.log("Message", msg);
+                }
+           
+       });
+   });
 
 });

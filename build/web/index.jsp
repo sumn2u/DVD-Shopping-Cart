@@ -1,5 +1,24 @@
 
 <%@page import="com.admin.DBConnec"%>
+ <% 
+       DBConnec dbShowAll =new DBConnec();
+       dbShowAll.stmt=dbShowAll.con.prepareStatement("SELECT id,quantity ,remaining FROM `products`");
+//              out.println(dbShowCatId.stmt);
+       dbShowAll.Rs=dbShowAll.stmt.executeQuery();
+        while(dbShowAll.Rs.next()){ 
+                   String id = dbShowAll.Rs.getString(1);
+                   Integer totalQuantity = dbShowAll.Rs.getInt(2);
+                   Integer purchased = dbShowAll.Rs.getInt(3);
+                   Integer quantity = totalQuantity -purchased;
+                  DBConnec dbShowUpdate =new DBConnec(); 
+                   dbShowUpdate.stmt=dbShowUpdate.con.prepareStatement("update products set quantity=?, remaining=? where id=?");
+   //System.out.println(dbAddCartResult.stmt); 
+                    dbShowUpdate.stmt.setInt(1, quantity);
+                    dbShowUpdate.stmt.setInt(2, 0);
+                    dbShowUpdate.stmt.setString(3, id);
+                    dbShowUpdate.rs = dbShowUpdate.stmt.executeUpdate();
+        }
+             %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -86,7 +105,7 @@
 					This is a simple and <b><a href="http://www.sumn2u-sumankunwar.rhcloud.com" title="Read the article!">responsive shopping cart which help in further transaction process</a></b>. It looks nice on both desktop and mobile browsers. Try it by resizing your window (or opening it on your smartphone and pc). Try adding dvd's you like :-)
 				</p>
 			</div> 
-			 
+			   
 				<div class="col-md-7 col-sm-12 text-left container" id="paging_container2">
 			    <div class="row list-inline columnCaptions" >
 						<span>QTY</span>
@@ -94,6 +113,7 @@
 						<span>Price</span>
 					
 				</div>
+                                  
 				<ul class="content" id="show-dvd-cat-result">
 <!--					<li class="row" data-code="p001"  >
 						<span class="quantity">   <input type="text" class="form-control" id="dvdQuantity" ></span>
@@ -131,8 +151,10 @@
 						<span class="order"> <a class="text-center">ORDER</a></span>
 					</li> -->
 				</ul>
+                                  
 				<div class="page_navigation"></div>
 			</div>
+                           
 		
 
 		</div>
@@ -154,17 +176,20 @@
 						<span>ITEM</span>
 						<span>Price</span>
 				</div>
+                      
 				<ul class="content" id="addProduct">
 					
 					
 				 	<li class="row totals" id="total-amount">
 						<span class="itemName">Total:</span>
 						<span class="price">$</span>
-						<span class="order"> <a class="text-center">ORDER</a></span>
+						<span class="order"> <button type="submit" class="text-center" id="order-dvds">ORDER</button></span>
 					</li> 
 				</ul>
+                            
 				<!-- <div class="page_navigation" id="navigation-menu"></div> -->
-				<button class="btn pull-right" type="submit" id="print-order"> Print Order</button> 
+				<a class="btn pull-right" type="submit" id="print-order"> Print Order</a> 
+                            
 			</div>
 
 
