@@ -97,7 +97,7 @@
 
 		</div>
 		<div class="container text-center hide" id="show-dvd">
-                    <div class="show-back"> Back </div>
+<!--                    <div class="show-back"> Back </div>-->
 			<div class="col-md-5 col-sm-12">
 				<div class="bigcart"></div>
 				<h1>Select Your DVD</h1>
@@ -160,7 +160,7 @@
 		</div>
 
 		<div class="container text-center hide" id="show-cart">
-                        <div class="show-back"> Back </div>
+<!--                        <div class="show-back"> Back </div>-->
 		 	<div class="col-md-5 col-sm-12">
 				<div class="bigcart"></div>
 				<h1>DVD's in my cart !</h1>

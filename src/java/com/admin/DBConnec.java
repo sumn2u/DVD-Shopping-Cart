@@ -38,7 +38,7 @@ public class DBConnec {
     public DBConnec(){
        try{
            Class.forName("com.mysql.jdbc.Driver");
-           con=DriverManager.getConnection("jdbc:mysql://localhost:3306/eshopdb","root","root");
+           con=DriverManager.getConnection("jdbc:mysql://localhost:3306/eshopdb","root","suman");
            System.out.println(con);
        }
        catch(Exception ex){
