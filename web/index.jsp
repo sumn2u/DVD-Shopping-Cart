@@ -181,13 +181,26 @@
 					
 					
 				 	<li class="row totals" id="total-amount">
+                                            
 						<span class="itemName">Total:</span>
 						<span class="price">$</span>
 						<span class="order"> <button type="submit" class="text-center" id="order-dvds">ORDER</button></span>
+                                                <!--<span class="order"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/x-click-but6.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" id="order-dvds"></span>-->
 					</li> 
+                                        
+                                        
 				</ul>
+                            <div id="payment-gateway">
+                            <form name="paypalForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+
+
+<input type="submit" value="PayPal">
+</form> <span class="order"> <button type="submit" class="text-center" id="order">ORDER</button></span>
+                            </div>
+                           
                             
 				<!-- <div class="page_navigation" id="navigation-menu"></div> -->
+                                
 				<a class="btn pull-right" type="submit" id="print-order"> Print Order</a> 
                             
 			</div>

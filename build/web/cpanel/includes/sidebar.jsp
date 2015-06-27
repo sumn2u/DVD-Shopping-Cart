@@ -1,28 +1,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.admin.DBConnec"%>
 
-
-
-
-
-
-
-<!--<?php
-$cat = mysql_query("select * from tbl_category");
-$catnum = mysql_num_rows($cat);
-$ads = mysql_query("select * from tbl_product");
-$adsnum = mysql_num_rows($ads);
-$admin = mysql_query("select * from tbl_admin");
-$adminum = mysql_num_rows($admin);
-$page = mysql_query("select * from tbl_pages");
-$pagenum = mysql_num_rows($page);
-$image = mysql_query("select * from tbl_image");
-$pageimg = mysql_num_rows($image);
-$contact = mysql_query("select * from tbl_contact");
-$conatctnum = mysql_num_rows($contact);
-$news = mysql_query("select * from tbl_news");
-$newsnum = mysql_num_rows($news);
-?>-->
 <ul id="navigation">
 						<li class="first active">
 							<div><a href="index.jsp">Dashboard</a><span class="icon-nav dashboard"></span></div>
@@ -76,31 +54,34 @@ $newsnum = mysql_num_rows($news);
     %></span></div>
 							<div class="back"></div>
 						</li>
+                                                 <li>
+							<div><a href="index.jsp?page=admin">Admin </a><span class="icon-nav settings"></span>
+                                                        
+                                                            <span><%                                         DBConnec dbAdmin =new DBConnec();
+  dbAdmin .stmt=dbAdmin .con.prepareStatement("SELECT count(id) As total from `user`");
+   ResultSet rssas= dbAdmin .stmt.executeQuery(); 
+    
+   while(rssas.next()){
+       int count = rssas.getInt("total");
+       %>
+       <%= count%>
+  <% }  %> </span></div>
+							<div class="back"></div>
+						</li>
 						<li>
 							<div><a href="index.jsp?page=add_ads">Add A New DVD</a><span class="icon-nav interface-elements"></span></div>
 							<div class="back"></div>
 						</li>
-                        
-                        <li>
-							<div><a href="index.jsp?page=admin">Admins</a><span class="icon-nav settings"></span><span> <%
-  DBConnec db =new DBConnec();
-  db.stmt=db.con.prepareStatement("SELECT count(id) As total from `user`");
-   ResultSet rsss= db.stmt.executeQuery(); 
-    
-   while(rsss.next()){
-       int count = rsss.getInt("total");
-       %>
-       <%= count%>
-  <% }
-    
-    
-    
-    
-    
-    
-    
-    %></span></div>
-							<div class="last"></div>
+         
+                                                 <li>
+							<div><a href="index.jsp?page=shopping_cart">Shopping Cart</a><span class="icon-nav form-elements"></span></div>
+							<div class="back"></div>
+						</li>
+                       
+						
+                                                <li>
+							<div><a href="index.jsp?page=back_up">Back up </a><span class="icon-nav interface-elements"></span></div>
+							<div class="back"></div>
 						</li>
 						
 						<li>

@@ -35,7 +35,7 @@
                 
                DBConnec dbb =new DBConnec();
               dbb.stmt=dbb.con.prepareStatement("SELECT * from user");
-              
+         
               dbb.Rs=dbb.stmt.executeQuery(); 
                while(dbb.Rs.next()){ 
                                                String id = dbb.Rs.getString(1);
@@ -50,7 +50,7 @@
 									<td><%= id %></td> 
                                                                         <td><%= name %></td> 
 									<td><%= active %></td> 
-                                    <td><a href="index.jsp?page=edit_admin&id=<%= id %>" class="">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?page=delete_admin&id=<%= id %>" class="">Delete</a></td>
+                                    <td><a href="index.jsp?page=edit_admin&id=<%= id %>" class="">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.jsp?page=del_admin&id=<%= id %>" class="">Delete</a></td>
 								</tr> 
                           <%} %>
                    

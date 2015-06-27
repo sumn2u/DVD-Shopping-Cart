@@ -302,39 +302,81 @@ $(document).on('ready', function() {
 //       });
 //       return false;
     });
-    $(document).on('click', '#order-dvds', function() {
+//    $(document).on('click', '#order-dvds', function() {
+//        var data = [];
+//        //$('.dvd-inmy-cart').children('span').text()
+//        $('.dvd-inmy-cart').each(function() {
+//            var $thatQuanity = $(this).children('span:first').text();
+//            var $thatName = $(this).children('span:nth-child(2)').text();
+//            var $thatPrice = $(this).children('span:last').data('price');
+//            data.push({"quantity": $thatQuanity, "name": $thatName, "price": $thatPrice});
+//            // var $thatName = $(this).next().text();
+//            //data.push({"quantity":$thatQuanity,"name":$thatName});
+//            console.log("That Quantity is ", $thatQuanity);
+//            console.log("That Name is ", $thatName);
+//            console.log("That Price is", $thatPrice);
+//
+//        });
+//        console.log("Data" + data);
+//
+//
+//
+//
+//        $.ajax({
+//            type: "post",
+//            url: "order.jsp", //this is my servlet
+//
+//            //data:JSON.stringify(data),
+//            data: {data: data},
+//            success: function(msg) {
+//                alert("Transaction Successfull !!");
+//                window.location.reload();
+//                console.log("Message", msg);
+//            }
+//
+//        });
+//    });
+    
+      $(document).on('mouseover', '#order-dvds', function() {
+//          alert("Des");
         var data = [];
+        
+             $('[name="paypalForm"]').html('');  
+          
+        var template = "<input type='hidden' name='business' value='sumn2u@gmail.com' />"
+                             +"<input type='hidden' name='cmd' value='_cart'>"
+                     +"<input type='hidden' name='upload' value='1'>";
+                             
         //$('.dvd-inmy-cart').children('span').text()
-        $('.dvd-inmy-cart').each(function() {
+          console.log("Temaplate One", template);
+        $('.dvd-inmy-cart').each(function(key ,value ) {
+//             console.log("Thisss", key);
+          var index = key + 1;
             var $thatQuanity = $(this).children('span:first').text();
             var $thatName = $(this).children('span:nth-child(2)').text();
             var $thatPrice = $(this).children('span:last').data('price');
-            data.push({"quantity": $thatQuanity, "name": $thatName, "price": $thatPrice});
+            template += "<input type='hidden' name='item_name_"+ index+"' value='"+$thatName+"'>"
+                             +"<input type='hidden' name='quantity_"+index+"' value='"+$thatQuanity+"'>"
+                             +"<input type='hidden' name='amount_"+index+"' value='"+$thatQuanity*$thatPrice +"'>"
+                             +"<input type='hidden' name='shipping_"+index+"' value='1.75'>";
+            
+           console.log("Temaplate Two", template);
             // var $thatName = $(this).next().text();
             //data.push({"quantity":$thatQuanity,"name":$thatName});
-            console.log("That Quantity is ", $thatQuanity);
+            console.log("That Quantity is ", ($thatQuanity));
             console.log("That Name is ", $thatName);
             console.log("That Price is", $thatPrice);
+          
 
         });
+         
+         template += "<input type='hidden' name='return' value='http://localhost:8084/DVDAppp/return.jsp?success=true' />"
+                             +"<input name='notify_url' value='http://localhost:8084/DVDAppp/test.jsp' type='hidden'>"
+                             +"<input type='hidden' name='cancel_return' value='http://localhost:8084/WebEE/index.jsp' />"
+                             +"<input type='image' src='https://www.paypalobjects.com/en_US/i/btn/x-click-but6.gif' border='0' name='submit' alt='Make payments with PayPal - it's fast, free and secure!'>";
+           console.log("Temaplate Three", template);
+            $(template).appendTo($('[name="paypalForm"]'));
         console.log("Data" + data);
-
-
-
-
-        $.ajax({
-            type: "post",
-            url: "order.jsp", //this is my servlet
-
-            //data:JSON.stringify(data),
-            data: {data: data},
-            success: function(msg) {
-                alert("Transaction Successfull !!");
-                window.location.reload();
-                console.log("Message", msg);
-            }
-
-        });
     });
 
 });
