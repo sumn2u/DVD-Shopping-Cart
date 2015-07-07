@@ -1,6 +1,6 @@
 // wait  until all dom elements are loaded 
 $(document).on('ready', function() {
-
+alert("suman");
     // remove item gets clciked
     $(document).off('click', '.glyphicon-remove');
     $(document).on('click', '.glyphicon-remove', function() {

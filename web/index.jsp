@@ -204,7 +204,7 @@
     <div class="col-xs-6 text-right">   
         <div class="next">
          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
+ Cash on Delivery
 </button>
         </div>
     </div>
@@ -230,7 +230,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel"> Buyer's Information</h4>
       </div>
       <div class="modal-body">
       <div class="row">
@@ -304,7 +304,7 @@
 
 		<script src="assets/js/jquery.js"></script> 
 		<script src="assets/js/jquery.paginate.js"></script>
-		<script src="assets/js/app.js"></script>
+		<script src="assets/js/apps.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="assets/js/customjs.js"></script>
 

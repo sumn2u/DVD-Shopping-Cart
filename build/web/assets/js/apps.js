@@ -1,6 +1,13 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 // wait  until all dom elements are loaded 
 $(document).on('ready', function() {
-alert("suman");
+
     // remove item gets clciked
     $(document).off('click', '.glyphicon-remove');
     $(document).on('click', '.glyphicon-remove', function() {
