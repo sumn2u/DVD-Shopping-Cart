@@ -256,6 +256,8 @@ $(document).on('ready', function() {
         $(document).find('#show-category').addClass('active');
     });
 //    $('#show-cat-name').text()
+
+ 
     $(document).off('click', '#show-cat-name');
     $(document).on('click', '#show-cat-name', function() {
         var catId = $(this).data("catid");
@@ -336,9 +338,10 @@ $(document).on('ready', function() {
 //
 //        });
 //    });
-    
+ 
+     $(document).off('mouseover', '#order-dvds');
       $(document).on('mouseover', '#order-dvds', function() {
-//          alert("Des");
+   $('#payment-gateway').removeClass('hide');
         var data = [];
         
              $('[name="paypalForm"]').html('');  
@@ -376,7 +379,9 @@ $(document).on('ready', function() {
                              +"<input type='image' src='https://www.paypalobjects.com/en_US/i/btn/x-click-but6.gif' border='0' name='submit' alt='Make payments with PayPal - it's fast, free and secure!'>";
            console.log("Temaplate Three", template);
             $(template).appendTo($('[name="paypalForm"]'));
+                  document.getElementById('payment-gateway').className ="";
         console.log("Data" + data);
     });
+    
 
 });

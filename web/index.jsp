@@ -184,18 +184,32 @@
                                             
 						<span class="itemName">Total:</span>
 						<span class="price">$</span>
-						<span class="order"> <button type="submit" class="text-center" id="order-dvds">ORDER</button></span>
+						<span class="order"> <button type="submit" class="text-center btn btn-primary btn-lg"" id="order-dvds">ORDER</button></span>
                                                 <!--<span class="order"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/x-click-but6.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" id="order-dvds"></span>-->
 					</li> 
                                         
                                         
 				</ul>
-                            <div id="payment-gateway">
-                            <form name="paypalForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                            <div id="payment-gateway" class="hide">
+                               
+    <div class="col-xs-6 text-left">
+        <div class="previous">
+                   <form name="paypalForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
 
-<input type="submit" value="PayPal">
-</form> <span class="order"> <button type="submit" class="text-center" id="order">ORDER</button></span>
+<input type="image" src="assets/images/paypal.gif" border="0" name="submit" alt="Make payments with PayPal - it" s="" fast,="" free="" and="" secure!'="">
+</form>
+        </div>
+    </div>
+    <div class="col-xs-6 text-right">   
+        <div class="next">
+         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+        </div>
+    </div>
+                  
+
                             </div>
                            
                             
@@ -207,8 +221,81 @@
 
 
 		</div>
+                                    
 
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+      <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="firstname" class="sr-only"></label>
+                <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
+                       title="Enter first name"
+                       placeholder="First name"/>
+            </div>
+
+            <div class="form-group col-xs-6">
+                <label for="lastname" class="sr-only"></label>
+                <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
+                       title="Enter last name"
+                       placeholder="Last name"/>
+            </div>
+        </div>
+           <div class="row">
+         <!--  client email -->
+      <div class="form-group col-xs-12" id="email-input">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" placeholder="example@example.com" value=channel.channelDescription >
+        </div>
+      </div>
+           </div>
+         <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="firstname" class="sr-only"></label>
+                <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
+                       title="Enter first name"
+                       placeholder="Phone"/>
+            </div>
+
+            <div class="form-group col-xs-6">
+                <label for="lastname" class="sr-only"></label>
+                <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
+                       title="Enter last name"
+                       placeholder="Address"/>
+            </div>
+        </div>
+           <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="firstname" class="sr-only"></label>
+                <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
+                       title="Enter first name"
+                       placeholder="City"/>
+            </div>
+
+            <div class="form-group col-xs-6">
+                <label for="lastname" class="sr-only"></label>
+                <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
+                       title="Enter last name"
+                       placeholder="Postal Code"/>
+            </div>
+        </div>
+         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 		<!-- The popover content -->
 

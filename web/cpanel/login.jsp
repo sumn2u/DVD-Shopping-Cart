@@ -33,7 +33,14 @@ if(isset($_POST['login'])){
 		}
 	}
 ?>-->
-
+<%
+    response.setHeader("Cache-Control","no-cache");
+    response.setHeader("Cache-Control", "must-revalidate");
+    response.setHeader("Cache-Control","no-store");
+    response.setHeader("Pragma","no-cache");
+    response.setDateHeader ("Expires", 0);
+    
+    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -41,18 +48,14 @@ if(isset($_POST['login'])){
 <title>Suman Kunwar:: Administration</title>
 <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" title="default" />
 <!--  jquery core -->
-<script src="js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
 
-<!-- Custom jquery scripts -->
-<script src="js/jquery/custom_jquery.js" type="text/javascript"></script>
+
 
 <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
-<script src="js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$(document).pngFix( );
-});
-</script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
+
 </head>
 <body id="login-bg"> 
  
@@ -82,7 +85,7 @@ $(document).ready(function(){
 <!--	<?php if(isset($msg)){ echo $msg; } ?>-->
 	 <br/>
     </p>
-		<form action="loginCheck.jsp" method="post" >
+		   <form name="form" id="form" method="post">
         <table border="0" cellpadding="0" cellspacing="0">
 		<tr>
 			<th>Username</th>
@@ -90,7 +93,7 @@ $(document).ready(function(){
 		</tr>
 		<tr>
 			<th>Password</th>
-			<td><input type="password" name="upass" value=""  onfocus="this.value=''" class="login-inp" /></td>
+			<td><input type="password" name="upass" value=""  onfocus="this.value=''" class="login-inp" required/></td>
 		</tr>
 		<tr>
 			<th></th>
