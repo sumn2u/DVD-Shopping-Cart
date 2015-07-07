@@ -3,7 +3,7 @@ Javascript Selectors
 document :meaning  the whole document  
 
 <div id='my-name' class='show-me'> 
-	<span> Aarati Shrestha </span>
+	<span> Suman Kunwar</span>
 </div>  
 
 css selectors 
@@ -51,5 +51,7 @@ BITBUCKET
 JQuery UI (It is used for User interface)
 Bootstrap/ Foundation are used mostly for designing template 
  
+
+
 
  

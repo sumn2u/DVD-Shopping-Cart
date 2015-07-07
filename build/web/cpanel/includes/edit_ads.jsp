@@ -12,6 +12,7 @@
         String quantity = request.getParameter("quantity").trim();
         String catName = request.getParameter("category").trim();
         String active = request.getParameter("publish").trim();
+
         String remaining = request.getParameter("remaining").trim();
       DBConnec dbEdit =new DBConnec();
      dbEdit.stmt=dbEdit.con.prepareStatement("update products set movie=?, price=?, total=?, category=?, remaining= ?, publish=? where id=?");
@@ -22,6 +23,7 @@
      dbEdit.stmt.setString(5, remaining);
      dbEdit.stmt.setString(6, active);
      dbEdit.stmt.setString(7, movId);
+
        System.out.println(dbEdit.stmt);
      dbEdit.rs = dbEdit.stmt.executeUpdate();
    if(dbEdit.rs == 1){
@@ -55,9 +57,11 @@
                                                 String description = dbEditDvD.Rs.getString(4);
                                                  String price = dbEditDvD.Rs.getString(5);
                                                  String quantity = dbEditDvD.Rs.getString(6);
+
                                                  String remaining = dbEditDvD.Rs.getString(7);
                                                 String category= dbEditDvD.Rs.getString(8);
                                                 String show = dbEditDvD.Rs.getString(9);
+
 		
 		%>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
@@ -122,4 +126,3 @@
 </form>
 </div>
                              <% } %>
-  

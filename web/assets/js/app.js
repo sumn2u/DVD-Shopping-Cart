@@ -341,7 +341,7 @@ $(document).on('ready', function() {
  
      $(document).off('mouseover', '#order-dvds');
       $(document).on('mouseover', '#order-dvds', function() {
-   $('#payment-gateway').removeClass('hide');
+      $('#payment-gateway').removeClass('hide');
         var data = [];
         
              $('[name="paypalForm"]').html('');  
@@ -383,5 +383,4 @@ $(document).on('ready', function() {
         console.log("Data" + data);
     });
     
-
 });
