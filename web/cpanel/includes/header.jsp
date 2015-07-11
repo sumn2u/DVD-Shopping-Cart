@@ -21,10 +21,10 @@
 		<![endif]-->
 		
 		<!-- Fonts -->
-		<!--<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold|PT+Sans+Narrow:regular,bold|Droid+Serif:i&amp;v1' rel='stylesheet' type='text/css' />-->
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold|PT+Sans+Narrow:regular,bold|Droid+Serif:i&amp;v1' rel='stylesheet' type='text/css' />
 		
-		<script type='text/javascript' src='js/jquery-1.8.3.min.js'></script>
-		<!--<script type="" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>-->
+		<script type='text/javascript' src='js/jquery-1.8.3.min'></script>
+		<script type="" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		
 		<!-- Calendar -->
 		<script type='text/javascript' src='_layout/scripts/jquery.fullcalendar/fullcalendar.min.js'></script>
@@ -38,12 +38,13 @@
 		<!-- Scripts -->
 		<script type='text/javascript' src='_layout/custom.js'></script>
         
-        <!--<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min97e1.js?ver=1.7'></script>-->
+        <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min97e1.js?ver=1.7'></script>
 		
 		<!-- Table sorter -->
 		<script type='text/javascript' src='_layout/scripts/jquery.tablesorter/jquery.tablesorter.min.js'></script>
 		
 		<script type='text/javascript' src='_layout/custom.js'></script>
+                <script src="js/cpanel.js" type="text/javascript"></script>
 		
 	</head>  
   

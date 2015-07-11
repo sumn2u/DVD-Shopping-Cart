@@ -1,29 +1,6 @@
 
 <%@page import="com.admin.DBConnec"%>
-<!--<?php
-$clas="";
-if(isset($_POST['add_admin'])){
-	$username = $_POST['username'];
-	$password = md5($_POST['password']);
-	$active = $_POST['active'];
-	if(empty($username) || empty($password)){
-		$msg = "Username and Passwords are Required!!!";
-		$clas = "three";
-		}
-		else{
-			$query = mysql_query("insert into tbl_admin (username, password, active) values('$username','$password','$active')");
-				if($query){
-					$msg = "Successfully Admin Added.";
-					$clas = "four";
-					}
-				else{
-					$msg = mysql_error();
-					$clas = "three";
-					}
-				}
-			}
-     
-?>-->
+
 <%
     String msg ="" ;
     String clas = "";
@@ -34,41 +11,76 @@ if(isset($_POST['add_admin'])){
         String userPass = request.getParameter("password").trim(); 
         
         String active = request.getParameter("active");
+        if(userName == null ||userName == "" ||userPass == "" ||userPass== null){
+                       out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			username/password is required.\n" +
+"    			</div>");
+        }else{
       DBConnec dbAddAdminNew =new DBConnec();
       DBConnec dbAdminSelect = new DBConnec();
-      dbAdminSelect.stmt = dbAdminSelect.con.prepareStatement("Select username from user");
+      dbAdminSelect.stmt = dbAdminSelect.con.prepareStatement("Select username from user where username ='"+ userName+"'");
+      System.out.println(dbAdminSelect.stmt); 
       dbAdminSelect.Rs=dbAdminSelect.stmt.executeQuery(); 
-               while(dbAdminSelect.Rs.next()){ 
-                                             
-                                               String usedname = dbAdminSelect.Rs.getString(1);
-                                               if(usedname.equalsIgnoreCase(userName)){
-                                                   out.println(" User already exists !!");
-                                               }else {
-                                                   dbAddAdminNew.stmt=dbAddAdminNew.con.prepareStatement("INSERT INTO user (username, userpass, active)VALUES (? ,AES_ENCRYPT(?, 'sumn2u'), ?)");
+//      out.println(dbAdminSelect.Rs);
+      if (dbAdminSelect.Rs.isBeforeFirst() ) {   
+                                 out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			user already exists.\n" +
+"    			</div>");
+
+}else{
+          dbAddAdminNew.stmt=dbAddAdminNew.con.prepareStatement("INSERT INTO user (username, userpass, active)VALUES (? ,AES_ENCRYPT(?, 'sumn2u'), ?)");
      dbAddAdminNew.stmt.setString(1, userName);
-     dbAddAdminNew.stmt.setString(2, userPass);
+    dbAddAdminNew.stmt.setString(2, userPass);
      dbAddAdminNew.stmt.setString(3, active);
     
-//  //out.println(dbEdit.stmt);
-     dbAddAdminNew.rs = dbAddAdminNew.stmt.executeUpdate();
+////  //out.println(dbEdit.stmt);
+    dbAddAdminNew.rs = dbAddAdminNew.stmt.executeUpdate();
    if(dbAddAdminNew.rs == 1){
-       //msg = "Successfully Admin Updated";
-        out.println(" <div class=\"notice-echo four\">\n" +
-"                                            Successfully added category!\n" +
-"						<span></span>\n" +
-"					</div>");
-       
-       //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
-       
+//       //msg = "Successfully Admin Updated";
+                  out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:green\">\n" +
+"	    			 Successfully added user!\n" +
+"    			</div>");
+//       
+//       //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
+//       
    }else{
-       clas ="three";
-   }
-             
-   
-                                               }
-		
-               }
-     
+      clas ="three";
+  }
+          
+      }
+//               while(dbAdminSelect.Rs.next()){ 
+//                                             
+//                                               String usedname = dbAdminSelect.Rs.getString(1);
+//                                               if(usedname.equalsIgnoreCase(userName) ||usedname.equals(userName)){
+//                                                                         out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+//"	    			user already exist.\n" +
+//"    			</div>");
+//                                               }
+//                                               if(!userName.equalsIgnoreCase(usedname) ){
+//                                                   dbAddAdminNew.stmt=dbAddAdminNew.con.prepareStatement("INSERT INTO user (username, userpass, active)VALUES (? ,AES_ENCRYPT(?, 'sumn2u'), ?)");
+//     dbAddAdminNew.stmt.setString(1, userName);
+//     dbAddAdminNew.stmt.setString(2, userPass);
+//     dbAddAdminNew.stmt.setString(3, active);
+//    
+////  //out.println(dbEdit.stmt);
+//     dbAddAdminNew.rs = dbAddAdminNew.stmt.executeUpdate();
+//   if(dbAddAdminNew.rs == 1){
+//       //msg = "Successfully Admin Updated";
+//                  out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:green\">\n" +
+//"	    			 Successfully added user!\n" +
+//"    			</div>");
+//       
+//       //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
+//       
+//   }else{
+//       clas ="three";
+//   }
+//             
+//   
+//                                               }
+//		
+//               }
+        }
    
 }
     %>

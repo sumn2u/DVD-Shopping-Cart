@@ -1,30 +1,5 @@
 <%@page import="com.admin.DBConnec"%>
-<!--<?php
- $clas="";
-if(isset($_POST['upd_category'])){
-	$id = $_POST['id'];
-	$catname = $_POST['catname'];
-	$publish = $_POST['publish'];
-	
-	$query = mysql_query("update tbl_category set cat_name='$catname', publish= '$publish' where id='$id'");
-	if($query){
-		$msg = "Successfully Category Updated.";
-		$clas = "four";
-		}
-	else{
-		$msg = mysql_error();
-		$clas = "three";
-		}
-	}
 
-?>
-<?php
-if(isset($_GET['id'])){
-	$id = $_GET['id'];
-	$qcategory = mysql_query("select * from tbl_category where id='$id'");
-	$qcategory1 = mysql_fetch_array($qcategory);
-	}
-?>-->
 <%
     String msg ="" ;
     String clas = "";
@@ -33,6 +8,11 @@ if(isset($_GET['id'])){
         String userId = request.getParameter("id");
         String catName = request.getParameter("catname").trim();
         String active = request.getParameter("publish");
+          if(catName == "" || catName == null){
+           out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			Provide category name.\n" +
+"    			</div>");
+        }else{
       DBConnec dbEdit =new DBConnec();
      dbEdit.stmt=dbEdit.con.prepareStatement("update tbl_category set cat_name=?, publish=? where id=?");
      dbEdit.stmt.setString(1, catName);
@@ -42,10 +22,9 @@ if(isset($_GET['id'])){
      dbEdit.rs = dbEdit.stmt.executeUpdate();
    if(dbEdit.rs == 1){
        //msg = "Successfully Admin Updated";
-        out.println(" <div class=\"notice-echo four\">\n" +
-"                                            Successfully updated category!\n" +
-"						<span></span>\n" +
-"					</div>");
+                  out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:green\">\n" +
+"	    			 Successfully updated category!\n" +
+"    			</div>");
        
        //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
        
@@ -53,7 +32,7 @@ if(isset($_GET['id'])){
        clas ="three";
    }
              
-   
+          }
    
 } %>
 

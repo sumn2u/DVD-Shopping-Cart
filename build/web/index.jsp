@@ -228,6 +228,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <form name="buyers-info" id="buyers-info" method="post">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"> Buyer's Information</h4>
@@ -253,37 +254,37 @@
       <div class="form-group col-xs-12" id="email-input">
         <label class="col-sm-2 control-label">Email</label>
         <div class="col-sm-10">
-            <input type="email" class="form-control" placeholder="example@example.com" value=channel.channelDescription >
+            <input type="email" name="email" class="form-control" placeholder="example@example.com" >
         </div>
       </div>
            </div>
          <div class="row">
             <div class="form-group col-xs-6">
-                <label for="firstname" class="sr-only"></label>
-                <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-                       title="Enter first name"
+                <label for="phone" class="sr-only"></label>
+                <input id="phone" class="form-control input-group-lg reg_name" type="text" name="phone"
+                       title="Enter your phone number"
                        placeholder="Phone"/>
             </div>
 
             <div class="form-group col-xs-6">
                 <label for="lastname" class="sr-only"></label>
-                <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-                       title="Enter last name"
+                <input id="address" class="form-control input-group-lg reg_name" type="text" name="address"
+                       title="Enter your address"
                        placeholder="Address"/>
             </div>
         </div>
            <div class="row">
             <div class="form-group col-xs-6">
                 <label for="firstname" class="sr-only"></label>
-                <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-                       title="Enter first name"
+                <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="city"
+                       title="Enter city"
                        placeholder="City"/>
             </div>
 
             <div class="form-group col-xs-6">
                 <label for="lastname" class="sr-only"></label>
-                <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-                       title="Enter last name"
+                <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="postalcode"
+                       title="Enter Postal code"
                        placeholder="Postal Code"/>
             </div>
         </div>
@@ -291,8 +292,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="buyers-info-sub" class="btn btn-primary">Save</button>
       </div>
+        </form>
     </div>
   </div>
 </div>
@@ -304,7 +306,7 @@
 
 		<script src="assets/js/jquery.js"></script> 
 		<script src="assets/js/jquery.paginate.js"></script>
-		<script src="assets/js/apps.js"></script>
+		<script src="assets/js/als.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="assets/js/customjs.js"></script>
 

@@ -90,6 +90,10 @@ String username = (String)session.getAttribute("username");
                 
                 <%@ include file="includes/del_category.jsp" %>
                 
+                <%} else if(pageName.equals("back_up")){%>
+                
+                <%@ include file="includes/backup.jsp" %>
+                
                 <%} else if(pageName.equals("edit_category")) { %>
                 
                 <%@ include file="includes/edit_category.jsp" %>

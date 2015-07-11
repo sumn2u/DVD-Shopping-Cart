@@ -1,9 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 // wait  until all dom elements are loaded 
 $(document).on('ready', function() {
@@ -326,7 +320,7 @@ $(document).on('ready', function() {
             console.log("That Price is", $thatPrice);
 
         });
-        console.log("Data" + cartData);
+      
 
         $.ajax({
             type: "post",
@@ -335,32 +329,35 @@ $(document).on('ready', function() {
             //data:JSON.stringify(data),
             data: {data: cartData},
             success: function(msg) {
-//                alert("Transaction Successfull !!");
-                 var res =  msg.replace(/<(\/?|\!?)(DOCTYPE html|html|head|body)>/g, "").trim(); 
-                 alert("hee",res);
-                console.log('msg', res);
-                return false;
-                var data = {"action": "test"}; 
-                  $.ajax({
-                  type: "post",
-                    url: "orderMe.jsp", //this is my servlet
+                var cartId = msg;
+//               console.log("Messsing", msg);
+
+          var data = {"cartId": cartId}; 
+          $.ajax({
+                   type: "post",
+                   url: "orderMe.jsp", //this is my servlet
 
             //data:JSON.stringify(data),
             data: $("#buyers-info").serialize()+"&" + $.param(data),
             success: function(msg) {
-             
-                    var res =  msg.replace(/<(\/?|\!?)(DOCTYPE html|html|head|body)>/g, "").trim(); 
-
-                alert("Transaction Successfull !!");
-//                window.location.reload();
-//                      var msgs = jQuery.parseJSON(json);
-alert(res);
-                console.log("Message", res);
+                  $('#myModal').modal('show');
+                    console.log("Success", msg);
+            },
+            error:function(ers){
+                console.log("Error", ers);
             }
 
         });
-//                window.location.reload();
-                console.log("Message", msg);
+            },
+            error: function(err){
+               var str = err.responseText;
+//              function stripHTML(str) {
+//                         return str.replace(/<(\/?|\!?)(DOCTYPE html|html|head|body)>/g, "").trim(); 
+//                    }
+
+              
+              
+                
             }
 
         });

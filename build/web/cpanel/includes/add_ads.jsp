@@ -3,41 +3,46 @@
  <% 
    if ("POST".equalsIgnoreCase(request.getMethod())) {
    // Form was submitted.
-       String clas = "";
         String catName = request.getParameter("category").trim();
         String dvdName = request.getParameter("dvd").trim();
-        String price = request.getParameter("password").trim();
-        String dvdQuantity = request.getParameter("").trim();
-        String dvdDescription = request.getParameter("").trim();
+        String price = request.getParameter("price").trim();
+        String dvdQuantity = request.getParameter("quantity").trim();
+//        String dvdDescription = request.getParameter("").trim();
         String active = request.getParameter("active");
+        if(catName == null ||catName == "" ||dvdName == "" ||dvdName== null ||price == "" ||price== null||dvdQuantity == "" ||dvdQuantity== null){
+                       out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			All fields are required.\n" +
+"    			</div>");
+        }else{
       DBConnec dbAddDVD =new DBConnec();
-       dbAddDVD.stmt=dbAddDVD.con.prepareStatement("INSERT INTO user (username, userpass, active)VALUES (? ,AES_ENCRYPT(?, 'sumn2u'), ?)");
-     dbAddDVD.stmt.setString(1, catName);
-     dbAddDVD.stmt.setString(2, dvdName);
-     dbAddDVD.stmt.setString(3, active);
+       dbAddDVD.stmt=dbAddDVD.con.prepareStatement("INSERT INTO products (movie, price,quantity,category, publish)VALUES (? ,?, ?,?,?)");
+     dbAddDVD.stmt.setString(1, dvdName);
+     dbAddDVD.stmt.setString(2, price);
+     dbAddDVD.stmt.setString(3, dvdQuantity);
+      dbAddDVD.stmt.setString(4, catName);
+     dbAddDVD.stmt.setString(5, active);
     
-//  //out.println(dbEdit.stmt);
+ System.out.println(dbAddDVD.stmt);
      dbAddDVD.rs = dbAddDVD.stmt.executeUpdate();
    if(dbAddDVD.rs == 1){
        //msg = "Successfully Admin Updated";
-        out.println(" <div class=\"notice-echo four\">\n" +
-"                                            Successfully added category!\n" +
-"						<span></span>\n" +
-"					</div>");
+                         out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			Successfully added dvd.\n" +
+"    			</div>");
        
        //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
        
    }else{
-       clas ="three";
+       out.println("Could not delete it!");
    }
    }
  
- 
+   }
  
  %>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <div class="form-elements">
-<form name="ads" action="" method="post" enctype="multipart/form-data">
+<form name="ads" action="" method="post">
 					<h1>ADD A NEW DVD</h1>
 					<div class="hr"></div>
 <!--                    <div class="notice-<?php echo $clas; ?>">
@@ -58,17 +63,18 @@
                                                                     <%
                                         
                 
-               DBConnec dbCatList =new DBConnec();
-              dbCatList.stmt=dbCatList.con.prepareStatement("SELECT cat_name from tbl_category");
+               DBConnec dbCatLists =new DBConnec();
+              dbCatLists.stmt=dbCatLists.con.prepareStatement("SELECT id, cat_name from tbl_category");
               
-              dbCatList.Rs=dbCatList.stmt.executeQuery(); 
+              dbCatLists.Rs=dbCatLists.stmt.executeQuery(); 
               %>
 							<select name="category">
                                                                                                         
                    
-               <%while(dbCatList.Rs.next()){ %>
+               <%while(dbCatLists.Rs.next()){ %>
+               
                                            
-                                   <option value="<%= dbCatList.Rs.getString(1)%>"><%=dbCatList.Rs.getString(1)%></option>            
+                                   <option value="<%= dbCatLists.Rs.getString(1)%>"><%=dbCatLists.Rs.getString(2)%></option>            
                                   
 		<%}%>
 <!--                            <?php
@@ -79,11 +85,11 @@
                             </select>
                             <input type="text" name="dvd" value="" />
                  
-                            <div class="rad-el">YES<input class="rad" type="radio" name="publish" checked="checked" value="1" /></div> <br/>
-                            <div class="rad-el">NO<input class="rad" type="radio" name="publish" value="0" /> </div>
+                           <div class="rad-el">YES<input class="rad" type="radio" name="active" checked="checked" value="1" /></div> <br/>
+                            <div class="rad-el">NO<input class="rad" type="radio" name="active" value="0" /> </div>
 						<div style="clear:both"></div>
-                              <input type="text" name="ad_title" value="" />
-                               <input type="text" name="ad_title" value="" />
+                              <input type="text" name="price" value="" />
+                               <input type="text" name="quantity" value="" />
                             <div class="wysiwyg-editor-wrapper">
 							<textarea  name="editor1" id="sample-textarea" class="ckeditor" rows="20" cols="25" placeholder="Input Goes Here ! ! ">
 								 

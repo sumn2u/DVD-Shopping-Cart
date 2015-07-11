@@ -1,28 +1,7 @@
 
 
 <%@page import="com.admin.DBConnec"%>
-<!--if(isset($_POST['upd_admin'])){
-	$id = $_POST['id'];
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$active = $_POST['active'];
-	
-	$query = mysql_query("update tbl_admin set username='$username', password='$password', active= '$active' where id='$id'");
-	if($query){
-		$msg = "Successfully Admin Updated.";
-		$clas = "four";
-		}
-	else{
-		$msg = mysql_error();
-		$clas = "three";
-		}
-	}
 
-if(isset($_GET['id'])){
-	$id = $_GET['id'];
-	$qcategory = mysql_query("select * from tbl_admin where id='$id'");
-	$qcategory1 = mysql_fetch_array($qcategory);
-	}-->
 <%
     String msg ="" ;
     String clas = "";
@@ -32,6 +11,11 @@ if(isset($_GET['id'])){
    String usernames = request.getParameter("username").trim();
    String password = request.getParameter("password").trim();
    String active = request.getParameter("active");
+   if(usernames == null ||usernames == "" ||password == "" ||password== null){
+                       out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			username/password is required.\n" +
+"    			</div>");
+        }else{
    DBConnec dbEdit =new DBConnec();
    dbEdit.stmt=dbEdit.con.prepareStatement("update user set username=?, userpass=AES_ENCRYPT(?, 'sumn2u'), active=? where id=?");
    dbEdit.stmt.setString(1, usernames);
@@ -42,10 +26,9 @@ if(isset($_GET['id'])){
    dbEdit.rs = dbEdit.stmt.executeUpdate();
    if(dbEdit.rs == 1){
        //msg = "Successfully Admin Updated";
-        out.println(" <div class=\"notice-echo four\">\n" +
-"                                            Successfully updated!\n" +
-"						<span></span>\n" +
-"					</div>");
+                       out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			Successfully updated.\n" +
+"    			</div>");
        
        //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
        
@@ -53,7 +36,7 @@ if(isset($_GET['id'])){
        clas ="three";
    }
              
-   
+   }
    
 }else{
                String userId = request.getParameter("id");

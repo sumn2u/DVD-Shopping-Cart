@@ -72,7 +72,12 @@
                             
                             }
                 
-            })
+            });
+            
+            $('[data-dismiss="alert"]').on('click', function(){
+                 $(this).parent().hide();
+                return false;
+            });
                         
         });
     

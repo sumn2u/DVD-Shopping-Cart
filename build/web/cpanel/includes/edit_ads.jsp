@@ -9,12 +9,18 @@
         String movId = request.getParameter("id").trim();
         String dvdNames = request.getParameter("dvdName").trim();
         String price  = request.getParameter("dvd_price").trim();
-        String quantity = request.getParameter("quantity").trim();
+//        String quantity = request.getParameter("quantity").trim();
         String catName = request.getParameter("category").trim();
         String active = request.getParameter("publish").trim();
 
         String remaining = request.getParameter("remaining").trim();
-      DBConnec dbEdit =new DBConnec();
+           if(movId == "" || movId == null|| dvdNames == "" || dvdNames == null ||price == "" || price == null||catName == "" || catName == null){
+           out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			All fields are necessary.\n" +
+"    			</div>");
+           }
+  DBConnec dbEdit =new DBConnec();
+  /*
      dbEdit.stmt=dbEdit.con.prepareStatement("update products set movie=?, price=?, total=?, category=?, remaining= ?, publish=? where id=?");
      dbEdit.stmt.setString(1, dvdNames);
      dbEdit.stmt.setString(2, price);
@@ -22,7 +28,14 @@
      dbEdit.stmt.setString(4, catName);
      dbEdit.stmt.setString(5, remaining);
      dbEdit.stmt.setString(6, active);
-     dbEdit.stmt.setString(7, movId);
+     dbEdit.stmt.setString(7, movId); */
+       dbEdit.stmt=dbEdit.con.prepareStatement("update products set movie=?, price=?,  category=?, remaining= ?, publish=? where id=?");
+     dbEdit.stmt.setString(1, dvdNames);
+     dbEdit.stmt.setString(2, price); 
+     dbEdit.stmt.setString(3, catName);
+     dbEdit.stmt.setString(4, remaining);
+     dbEdit.stmt.setString(5, active);
+     dbEdit.stmt.setString(6, movId);
 
        System.out.println(dbEdit.stmt);
      dbEdit.rs = dbEdit.stmt.executeUpdate();
@@ -75,7 +88,7 @@
                             <h4>DVD Name</h4>
 <!--                            <h4>Rating</h4>-->
                             <h4>Price</h4>
-                            <h4>Quantity</h4>
+<!--                            <h4>Quantity</h4>-->
                             <h4>Remaining </h4>
                             <h4>Publish</h4>
 <!--                            <h4>Description</h4>-->
@@ -103,7 +116,7 @@
                             <input type="text" name="dvdName" value="<%= dvdname %>" />
 <!--                            <input type="text" name="rating" value=" rating " />-->
                             <input type="text" name="dvd_price" value="<%= price %>" />
-                            <input type="text" name="quantity" value="<%= quantity %>" />
+<!--                            <input type="text" name="quantity" value="< quantity %>" />-->
                              <input type="text" name="remaining" value="<%= remaining %>" />
                             <div class="rad-el">YES<input class="rad" type="radio" name="publish" checked="checked" value="1" /></div> <br/>
                             <div class="rad-el">NO<input class="rad" type="radio" name="publish" value="0" /> </div>

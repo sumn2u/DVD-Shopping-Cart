@@ -4,16 +4,16 @@
     Author     : suman
 --%>
 
+<%@page import="org.json.simple.JSONObject"%>
 <%@page import="com.admin.DBConnec"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 
 <%
      
            String cartId;                             
             
             DBConnec dbCountCart =new DBConnec();
-              dbCountCart.stmt=dbCountCart.con.prepareStatement("SELECT MAX( cardid ) AS cartId FROM `ShoppingCarts` ");
+              dbCountCart.stmt=dbCountCart.con.prepareStatement("SELECT MAX( cardid +1 ) AS cartId FROM `ShoppingCarts` ");
               
               dbCountCart.Rs=dbCountCart.stmt.executeQuery(); 
                while(dbCountCart.Rs.next()){ 
@@ -60,7 +60,12 @@
 //     dbAddCartUpdate.stmt.setString(4, itemQuantity);
        //msg = "Successfully Admin Updated";
 //      if(dbAddCartUpdate.rs ==1){
-       out.println("Tarnsaction successfull");
+//       response.setContentType("application/json");
+       out.println(cartId);
+//     JSONObject json = new JSONObject();
+//     json.put("cartId",cartId);
+//      String jString = JSONObject.toJSONString(json);
+//          out.println(jString);
        //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
        
    }else{

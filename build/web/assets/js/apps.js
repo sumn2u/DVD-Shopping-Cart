@@ -311,40 +311,60 @@ $(document).on('ready', function() {
 //       });
 //       return false;
     });
-//    $(document).on('click', '#order-dvds', function() {
-//        var data = [];
-//        //$('.dvd-inmy-cart').children('span').text()
-//        $('.dvd-inmy-cart').each(function() {
-//            var $thatQuanity = $(this).children('span:first').text();
-//            var $thatName = $(this).children('span:nth-child(2)').text();
-//            var $thatPrice = $(this).children('span:last').data('price');
-//            data.push({"quantity": $thatQuanity, "name": $thatName, "price": $thatPrice});
-//            // var $thatName = $(this).next().text();
-//            //data.push({"quantity":$thatQuanity,"name":$thatName});
-//            console.log("That Quantity is ", $thatQuanity);
-//            console.log("That Name is ", $thatName);
-//            console.log("That Price is", $thatPrice);
-//
-//        });
-//        console.log("Data" + data);
-//
-//
-//
-//
-//        $.ajax({
-//            type: "post",
-//            url: "order.jsp", //this is my servlet
-//
-//            //data:JSON.stringify(data),
-//            data: {data: data},
-//            success: function(msg) {
+    $(document).on('click', '#buyers-info-sub', function() {
+        var cartData = [];
+        //$('.dvd-inmy-cart').children('span').text()
+        $('.dvd-inmy-cart').each(function() {
+            var $thatQuanity = $(this).children('span:first').text();
+            var $thatName = $(this).children('span:nth-child(2)').text();
+            var $thatPrice = $(this).children('span:last').data('price');
+            cartData.push({"quantity": $thatQuanity, "name": $thatName, "price": $thatPrice});
+            // var $thatName = $(this).next().text();
+            //data.push({"quantity":$thatQuanity,"name":$thatName});
+            console.log("That Quantity is ", $thatQuanity);
+            console.log("That Name is ", $thatName);
+            console.log("That Price is", $thatPrice);
+
+        });
+        console.log("Data" + cartData);
+
+        $.ajax({
+            type: "post",
+            url: "order.jsp", //this is my servlet
+            dataType: 'json',
+            //data:JSON.stringify(data),
+            data: {data: cartData},
+            success: function(msg) {
 //                alert("Transaction Successfull !!");
+                 var res =  msg.replace(/<(\/?|\!?)(DOCTYPE html|html|head|body)>/g, "").trim(); 
+                 alert("hee",res);
+                console.log('msg', res);
+                return false;
+                var data = {"action": "test"}; 
+                  $.ajax({
+                  type: "post",
+                    url: "orderMe.jsp", //this is my servlet
+
+            //data:JSON.stringify(data),
+            data: $("#buyers-info").serialize()+"&" + $.param(data),
+            success: function(msg) {
+             
+                    var res =  msg.replace(/<(\/?|\!?)(DOCTYPE html|html|head|body)>/g, "").trim(); 
+
+                alert("Transaction Successfull !!");
 //                window.location.reload();
-//                console.log("Message", msg);
-//            }
-//
-//        });
-//    });
+//                      var msgs = jQuery.parseJSON(json);
+alert(res);
+                console.log("Message", res);
+            }
+
+        });
+//                window.location.reload();
+                console.log("Message", msg);
+            }
+
+        });
+    });
  
      $(document).off('mouseover', '#order-dvds');
       $(document).on('mouseover', '#order-dvds', function() {

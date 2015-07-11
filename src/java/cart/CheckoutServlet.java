@@ -17,7 +17,7 @@ public class CheckoutServlet extends HttpServlet
         HttpSession session = request.getSession();
 
 // Get the cart
-        
+
         ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
        // out.println(cart);
         

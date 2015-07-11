@@ -1,27 +1,5 @@
 <%@page import="com.admin.DBConnec"%>
-<!--<?php
- $clas="";
-if(isset($_POST['add_category'])){
-	$catname = $_POST['catname'];
-	$publish = $_POST['publish'];
-	if(empty($catname )){
-		$msg = "Category Name is Required!!!";
-		$clas = "three";
-		}
-		else{
-			$query = mysql_query("insert into tbl_category (cat_name, publish) values('$catname','$publish')");
-			if($query){
-				$msg = "Successfully Category Added.";
-				$clas = "four";
-				}
-			else{
-				$msg = mysql_error();
-				$clas = "three";
-				}
-			}
-	}
 
-?>-->
 <%
     String msg ="" ;
     String clas = "";
@@ -30,6 +8,11 @@ if(isset($_POST['add_category'])){
         String userId = request.getParameter("id");
         String catName = request.getParameter("catname").trim();
         String active = request.getParameter("publish");
+        if(catName == "" || catName == null){
+           out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
+"	    			Provide category name.\n" +
+"    			</div>");
+        }else{
       DBConnec dbAddAdmin =new DBConnec();
      dbAddAdmin.stmt=dbAddAdmin.con.prepareStatement("INSERT INTO tbl_category (cat_name,publish)VALUES (? ,? )");
      dbAddAdmin.stmt.setString(1, catName);
@@ -38,10 +21,9 @@ if(isset($_POST['add_category'])){
      dbAddAdmin.rs = dbAddAdmin.stmt.executeUpdate();
    if(dbAddAdmin.rs == 1){
        //msg = "Successfully Admin Updated";
-        out.println(" <div class=\"notice-echo four\">\n" +
-"                                            Successfully added category!\n" +
-"						<span></span>\n" +
-"					</div>");
+           out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:green\">\n" +
+"	    			Category added successfully.\n" +
+"    			</div>");
        
        //request.getRequestDispatcher("includes/admin.jsp").include(request, response);
        
@@ -49,7 +31,7 @@ if(isset($_POST['add_category'])){
        clas ="three";
    }
              
-   
+        }
    
 }
     %>

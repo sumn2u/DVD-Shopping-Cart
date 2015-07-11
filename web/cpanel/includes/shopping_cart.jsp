@@ -13,7 +13,7 @@
         <form name="" action="" method="post">    
 <div class="fixed form-elements-inputs">
 						<div class="col-400">
-							<input type="text" name="catname" value="" />
+							<input type="text" name="custname" value="" />
 				
 						</div>
 						<div class="col-240">
@@ -34,7 +34,7 @@
     String msg ="" ;
     String clas = "";
     if ("POST".equalsIgnoreCase(request.getMethod())) {
-        String cartId = request.getParameter("catname").trim();
+        String cust = request.getParameter("custname").trim();
         %>
  
 
@@ -48,9 +48,11 @@
 								</tr> 
 							</thead> 
 							<tbody> 
+                                                           <!-- //price, quantity
+                                                            //SELECT ShoppingCarts.movie, buyers.firstname , buyers.lastname , buyers.emailaddress from buyers INNER JOIN ShoppingCarts ON  ShoppingCarts.cardId = buyers.shoppinId where buyers.firstname like '%"+ cust  +"%'"-->
                                                                  <%   
          DBConnec dbShopCarts =new DBConnec();
-              dbShopCarts.stmt=dbShopCarts.con.prepareStatement("SELECT movie ,price, quantity from ShoppingCarts where cardId='"+ cartId  +"'");
+              dbShopCarts.stmt=dbShopCarts.con.prepareStatement("SELECT ShoppingCarts.movie, ShoppingCarts.price, ShoppingCarts.quantity , buyers.emailaddress from buyers INNER JOIN ShoppingCarts ON  ShoppingCarts.cardId = buyers.shoppinId where buyers.emailaddress ='"+ cust  +"'");
               System.out.print( dbShopCarts.stmt);
               dbShopCarts.Rs=dbShopCarts.stmt.executeQuery();
               while(dbShopCarts.Rs.next()){ 
