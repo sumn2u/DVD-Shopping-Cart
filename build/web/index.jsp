@@ -228,7 +228,27 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <form name="buyers-info" id="buyers-info" method="post">
+<!--        <form name="form" id="form" method="post">
+        <table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<th>Username</th>
+			<td><input type="text" name="uname" value=""  class="login-inp" /></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><input type="password" name="upass" value=""  onfocus="this.value=''" class="login-inp" required/></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td valign="top">&nbsp;</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="submit" name="login" class="submit-login"  /></td>
+		</tr>
+		</table>
+        </form>-->
+        <form name="buyers-info" id="form" method="post">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"> Buyer's Information</h4>
@@ -292,7 +312,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="buyers-info-sub" class="btn btn-primary">Save</button>
+        <button type="submit" id="buyers-info-sub" class="btn btn-primary">Save</button>
       </div>
         </form>
     </div>
@@ -306,6 +326,7 @@
 
 		<script src="assets/js/jquery.js"></script> 
 		<script src="assets/js/jquery.paginate.js"></script>
+                <script src="assets/js/jquery.validate.min.js" type="text/javascript"></script>
 		<script src="assets/js/als.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="assets/js/customjs.js"></script>

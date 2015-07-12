@@ -18,7 +18,7 @@
            out.println("<div class=\"well well-sm text-center\" id=\"copied-msg\" style=\"color:red\">\n" +
 "	    			All fields are necessary.\n" +
 "    			</div>");
-           }
+           }else{
   DBConnec dbEdit =new DBConnec();
   /*
      dbEdit.stmt=dbEdit.con.prepareStatement("update products set movie=?, price=?, total=?, category=?, remaining= ?, publish=? where id=?");
@@ -53,7 +53,7 @@
    }
              
    
-   
+           }
 } %>
 
                                                                    <%

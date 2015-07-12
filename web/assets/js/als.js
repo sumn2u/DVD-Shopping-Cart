@@ -305,7 +305,48 @@ $(document).on('ready', function() {
 //       });
 //       return false;
     });
-    $(document).on('click', '#buyers-info-sub', function() {
+//    $(document).on('click', '#buyers-info-sub', function() {
+ $('#form').validate({
+                    rules:{
+                        "firstname":{
+                            required:true
+                        },
+                        "email":{
+                            required:true,
+                            email:true,
+                            maxlength:100
+                      
+                        },
+                         "phone":{
+                            required:true,
+                            number:true,
+                            maxlength:13,
+                            minlength:10
+                      
+                        },
+                       
+ 
+                        "lastname":{
+                            required:true
+                        }},
+ 
+                    messages:{
+                        "firstname":{ 
+                            required:"Please provide your username."},
+ 
+                        "email":{
+                            required:"Email is necessary.",
+                            email:"Please provide valid email address."
+                        },
+                         "phone":{
+                            required:"Phone number is necessary.",
+                            number:"Please provide valid number."
+                        },
+                         "lastname":{
+                            required:"Provide your password.",
+                        }},
+ 
+                          submitHandler: function(form){
         var cartData = [];
         //$('.dvd-inmy-cart').children('span').text()
         $('.dvd-inmy-cart').each(function() {
@@ -361,11 +402,20 @@ $(document).on('ready', function() {
             }
 
         });
-    });
+                          }
+                      });
  
      $(document).off('mouseover', '#order-dvds');
       $(document).on('mouseover', '#order-dvds', function() {
-      $('#payment-gateway').removeClass('hide');
+          
+        var priceData = $('#total-amount').find('.price').text();
+        console.log("Dataaaaa====>",priceData);
+        if(priceData == "$" ){
+               $('#payment-gateway').addClass('hide');
+     
+        }else{
+             $('#payment-gateway').removeClass('hide');
+          }
         var data = [];
         
              $('[name="paypalForm"]').html('');  
@@ -403,7 +453,7 @@ $(document).on('ready', function() {
                              +"<input type='image' src='https://www.paypalobjects.com/en_US/i/btn/x-click-but6.gif' border='0' name='submit' alt='Make payments with PayPal - it's fast, free and secure!'>";
            console.log("Temaplate Three", template);
             $(template).appendTo($('[name="paypalForm"]'));
-                  document.getElementById('payment-gateway').className ="";
+//                  document.getElementById('payment-gateway').className ="";
         console.log("Data" + data);
     });
     
