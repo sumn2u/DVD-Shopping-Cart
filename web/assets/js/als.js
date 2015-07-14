@@ -379,9 +379,9 @@ $(document).on('ready', function() {
                    url: "orderMe.jsp", //this is my servlet
 
             //data:JSON.stringify(data),
-            data: $("#buyers-info").serialize()+"&" + $.param(data),
+            data: $("#form").serialize()+"&" + $.param(data),
             success: function(msg) {
-                  $('#myModal').modal('show');
+                  $('#myModal').modal('hide');
                     console.log("Success", msg);
             },
             error:function(ers){

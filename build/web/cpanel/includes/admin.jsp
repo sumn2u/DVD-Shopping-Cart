@@ -34,7 +34,7 @@
                                         
                 
                DBConnec dbb =new DBConnec();
-              dbb.stmt=dbb.con.prepareStatement("SELECT * from user");
+              dbb.stmt=dbb.con.prepareStatement("SELECT * from user where active = 0 ");
          
               dbb.Rs=dbb.stmt.executeQuery(); 
                while(dbb.Rs.next()){ 

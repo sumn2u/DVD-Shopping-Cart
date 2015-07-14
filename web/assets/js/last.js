@@ -1,3 +1,10 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 
 // wait  until all dom elements are loaded 
 $(document).on('ready', function() {
@@ -371,9 +378,9 @@ $(document).on('ready', function() {
             data: {data: cartData},
             success: function(msg) {
                 var cartId = msg;
-//               console.log("Messsing", msg);
+                console.log("Messsing", msg);
 
-          var data = {"cartId": cartData}; 
+          var data = {"cartId": cartId}; 
           $.ajax({
                    type: "post",
                    url: "orderMe.jsp", //this is my servlet
@@ -392,6 +399,7 @@ $(document).on('ready', function() {
             },
             error: function(err){
                var str = err.responseText;
+               console.log("Error", str);
 //              function stripHTML(str) {
 //                         return str.replace(/<(\/?|\!?)(DOCTYPE html|html|head|body)>/g, "").trim(); 
 //                    }

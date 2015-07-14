@@ -10,7 +10,8 @@
 
 <%
      
-           String cartId;                             
+           String cartId;     
+           boolean carts = false;
             
             DBConnec dbCountCart =new DBConnec();
               dbCountCart.stmt=dbCountCart.con.prepareStatement("SELECT MAX( cardid +1 ) AS cartId FROM `ShoppingCarts` ");
@@ -18,6 +19,9 @@
               dbCountCart.Rs=dbCountCart.stmt.executeQuery(); 
                while(dbCountCart.Rs.next()){ 
                      cartId = dbCountCart.Rs.getString(1);
+                     if(cartId == null ){
+                      cartId = "1";   
+                     }
                
 	
                //out.println(cartId);
@@ -59,9 +63,11 @@
 //     dbAddCartUpdate.stmt.setString(3, itemPrice);
 //     dbAddCartUpdate.stmt.setString(4, itemQuantity);
        //msg = "Successfully Admin Updated";
-//      if(dbAddCartUpdate.rs ==1){
+      if(dbAddCartUpdate.rs ==1){
 //       response.setContentType("application/json");
-       out.println(cartId);
+          carts = true;
+           
+      }
 //     JSONObject json = new JSONObject();
 //     json.put("cartId",cartId);
 //      String jString = JSONObject.toJSONString(json);
@@ -71,8 +77,24 @@
    }else{
       out.println("Could Not procceed!!");
    }
+    }
+    
+   if(carts){
+     
+        DBConnec dbCountCartS =new DBConnec();
+              dbCountCartS.stmt=dbCountCartS.con.prepareStatement("SELECT MAX(cardid) AS cartId FROM `ShoppingCarts` ");
+//              out.println(dbCountCartS.stmt);
+              dbCountCartS.Rs=dbCountCartS.stmt.executeQuery(); 
+               while(dbCountCartS.Rs.next()){ 
+                   if(dbCountCartS.Rs.getString(1) == null ){
+                      out.println("1");   
+                     }
+                  out.println( dbCountCartS.Rs.getString(1));
+               }
+    
+   }
               
     // Collect name and time in some bean and add to list yourself.
-}
+
                }
 %>

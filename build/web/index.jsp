@@ -327,7 +327,7 @@
 		<script src="assets/js/jquery.js"></script> 
 		<script src="assets/js/jquery.paginate.js"></script>
                 <script src="assets/js/jquery.validate.min.js" type="text/javascript"></script>
-		<script src="assets/js/als.js"></script>
+		<script src="assets/js/last.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="assets/js/customjs.js"></script>
 

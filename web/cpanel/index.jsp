@@ -1,6 +1,6 @@
 <%
 String username = (String)session.getAttribute("username");
-    
+String isAdmin = (String)session.getAttribute("isAdmin"); 
     if(username == null || username == ""){
         out.println("<script>window.location='login.jsp'</script>");
     }
@@ -63,11 +63,15 @@ String username = (String)session.getAttribute("username");
                   <% }else if(pageName.equals("edit_admin")) {%>
                   <%@ include file="includes/edit_admin.jsp" %>
                   
-                  <% }else if(pageName.equals("add_admin")){%>
+                  <% }else if(pageName.equals("add_admin")){
+                  if(isAdmin.equalsIgnoreCase("0")){
+                  }else{
+                      %>
+                 
                   <%@ include file="includes/add_admin.jsp" %>
                   
                  
-                 <% }else if(pageName.equals("add_category")){%>
+                 <% } }else if(pageName.equals("add_category")){%>
                  <%@ include file="includes/add_category.jsp" %>
                  <% } else if(pageName.equals("shopping_cart")){%>
                  <%@ include file="includes/shopping_cart.jsp" %>

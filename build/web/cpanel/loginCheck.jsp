@@ -12,12 +12,13 @@
          String password= request.getParameter("upass").trim();
          try{
               DBConnec db =new DBConnec();
-              db.stmt=db.con.prepareStatement("SELECT username, AES_DECRYPT(userpass, 'sumn2u') from user where username='"+username+"'");
+              db.stmt=db.con.prepareStatement("SELECT active ,username, AES_DECRYPT(userpass, 'sumn2u') from user where username='"+username+"'");
               db.Rs=db.stmt.executeQuery(); 
                 while(db.Rs.next()){ 
-                                                                                
-          String user=(db.Rs.getString(1));
-          String pass=(db.Rs.getString(2));
+          String isAdmin=(db.Rs.getString(1));                                                                      
+          String user=(db.Rs.getString(2));
+          String pass=(db.Rs.getString(3));
+          session.setAttribute("isAdmin", isAdmin);
            session.setAttribute("username", user);
 
            if(user.equals(username) && pass.equals(password)){

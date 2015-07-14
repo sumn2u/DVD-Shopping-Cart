@@ -1,6 +1,7 @@
+
 // wait  until all dom elements are loaded 
 $(document).on('ready', function() {
-alert("suman");
+
     // remove item gets clciked
     $(document).off('click', '.glyphicon-remove');
     $(document).on('click', '.glyphicon-remove', function() {
@@ -304,44 +305,117 @@ alert("suman");
 //       });
 //       return false;
     });
-//    $(document).on('click', '#order-dvds', function() {
-//        var data = [];
-//        //$('.dvd-inmy-cart').children('span').text()
-//        $('.dvd-inmy-cart').each(function() {
-//            var $thatQuanity = $(this).children('span:first').text();
-//            var $thatName = $(this).children('span:nth-child(2)').text();
-//            var $thatPrice = $(this).children('span:last').data('price');
-//            data.push({"quantity": $thatQuanity, "name": $thatName, "price": $thatPrice});
-//            // var $thatName = $(this).next().text();
-//            //data.push({"quantity":$thatQuanity,"name":$thatName});
-//            console.log("That Quantity is ", $thatQuanity);
-//            console.log("That Name is ", $thatName);
-//            console.log("That Price is", $thatPrice);
-//
-//        });
-//        console.log("Data" + data);
-//
-//
-//
-//
-//        $.ajax({
-//            type: "post",
-//            url: "order.jsp", //this is my servlet
-//
-//            //data:JSON.stringify(data),
-//            data: {data: data},
-//            success: function(msg) {
-//                alert("Transaction Successfull !!");
-//                window.location.reload();
-//                console.log("Message", msg);
-//            }
-//
-//        });
-//    });
+//    $(document).on('click', '#buyers-info-sub', function() {
+ $('#form').validate({
+                    rules:{
+                        "firstname":{
+                            required:true
+                        },
+                        "email":{
+                            required:true,
+                            email:true,
+                            maxlength:100
+                      
+                        },
+                         "phone":{
+                            required:true,
+                            number:true,
+                            maxlength:13,
+                            minlength:10
+                      
+                        },
+                       
+ 
+                        "lastname":{
+                            required:true
+                        }},
+ 
+                    messages:{
+                        "firstname":{ 
+                            required:"Please provide your username."},
+ 
+                        "email":{
+                            required:"Email is necessary.",
+                            email:"Please provide valid email address."
+                        },
+                         "phone":{
+                            required:"Phone number is necessary.",
+                            number:"Please provide valid number."
+                        },
+                         "lastname":{
+                            required:"Provide your password.",
+                        }},
+ 
+                          submitHandler: function(form){
+        var cartData = [];
+        //$('.dvd-inmy-cart').children('span').text()
+        $('.dvd-inmy-cart').each(function() {
+            var $thatQuanity = $(this).children('span:first').text();
+            var $thatName = $(this).children('span:nth-child(2)').text();
+            var $thatPrice = $(this).children('span:last').data('price');
+            cartData.push({"quantity": $thatQuanity, "name": $thatName, "price": $thatPrice});
+            // var $thatName = $(this).next().text();
+            //data.push({"quantity":$thatQuanity,"name":$thatName});
+            console.log("That Quantity is ", $thatQuanity);
+            console.log("That Name is ", $thatName);
+            console.log("That Price is", $thatPrice);
+
+        });
+      
+
+        $.ajax({
+            type: "post",
+            url: "order.jsp", //this is my servlet
+            dataType: 'json',
+            //data:JSON.stringify(data),
+            data: {data: cartData},
+            success: function(msg) {
+                var cartId = msg;
+//               console.log("Messsing", msg);
+
+          var data = {"cartId": cartData}; 
+          $.ajax({
+                   type: "post",
+                   url: "orderMe.jsp", //this is my servlet
+
+            //data:JSON.stringify(data),
+            data: $("#form").serialize()+"&" + $.param(data),
+            success: function(msg) {
+                  $('#myModal').modal('hide');
+                    console.log("Success", msg);
+            },
+            error:function(ers){
+                console.log("Error", ers);
+            }
+
+        });
+            },
+            error: function(err){
+               var str = err.responseText;
+//              function stripHTML(str) {
+//                         return str.replace(/<(\/?|\!?)(DOCTYPE html|html|head|body)>/g, "").trim(); 
+//                    }
+
+              
+              
+                
+            }
+
+        });
+                          }
+                      });
  
      $(document).off('mouseover', '#order-dvds');
       $(document).on('mouseover', '#order-dvds', function() {
-      $('#payment-gateway').removeClass('hide');
+          
+        var priceData = $('#total-amount').find('.price').text();
+        console.log("Dataaaaa====>",priceData);
+        if(priceData == "$" ){
+               $('#payment-gateway').addClass('hide');
+     
+        }else{
+             $('#payment-gateway').removeClass('hide');
+          }
         var data = [];
         
              $('[name="paypalForm"]').html('');  
@@ -379,7 +453,7 @@ alert("suman");
                              +"<input type='image' src='https://www.paypalobjects.com/en_US/i/btn/x-click-but6.gif' border='0' name='submit' alt='Make payments with PayPal - it's fast, free and secure!'>";
            console.log("Temaplate Three", template);
             $(template).appendTo($('[name="paypalForm"]'));
-                  document.getElementById('payment-gateway').className ="";
+//                  document.getElementById('payment-gateway').className ="";
         console.log("Data" + data);
     });
     
