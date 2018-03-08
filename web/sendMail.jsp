@@ -19,7 +19,7 @@
             
             
           final String username = "sumn2u@gmail.com";
-		final String password = "sumn2u@google:)";
+		final String password = "******";
  
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
